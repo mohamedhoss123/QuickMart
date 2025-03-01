@@ -1,5 +1,5 @@
 <?php
-require_once("Base.php");
+require_once(__DIR__."/Base.php");
 
 Class UserModel extends BaseModel
 {
@@ -32,6 +32,13 @@ Class UserModel extends BaseModel
             ':phone_number' => $this->phone_number,
             ':role' => $this->role
         ]);
+    }
+
+    public function findByEmail(string $email): array
+    {
+        $stmt = $this->conn->prepare("SELECT * FROM $this->table WHERE email = :email");
+        $stmt->execute([':email' => $email]);
+        return $stmt->fetch();
     }
 
  

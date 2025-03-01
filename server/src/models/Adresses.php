@@ -1,5 +1,5 @@
 <?php
-require_once("./Base.php");
+require_once(__DIR__."./Base.php");
 
 Class AdressModel extends BaseModel{
     public $name;

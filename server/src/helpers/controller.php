@@ -1,5 +1,6 @@
 <?php
-
+require_once(__DIR__ . '/http.php');
+require_once(__DIR__ . '/session.php');
 function get(callable $function){
     if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         call_user_func($function);

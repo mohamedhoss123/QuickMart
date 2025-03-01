@@ -28,3 +28,10 @@ function getRequestBody()
     return null;
 }
 
+
+
+function response($data, $status = 200)
+{
+    http_response_code($status);
+    echo json_encode($data);
+}

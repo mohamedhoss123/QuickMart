@@ -10,8 +10,8 @@ get(function(){
 
 
 post(function(){
-    $user = new UserModel(...getRequestBody());
-    $user->save();
+    $user = new UserModel();
+   var_dump( $user->findById(11));
 });
 
 

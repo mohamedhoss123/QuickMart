@@ -1,6 +1,6 @@
 <?php
 
-require_once("../database/connection.php");
+require_once(__DIR__."/../database/connection.php");
 class BaseModel{
     protected $conn;
     public $table;
@@ -18,5 +18,12 @@ class BaseModel{
     {
         $stmt = $this->conn->prepare("DELETE FROM $this->table WHERE id = :id");
         $stmt->execute([':id' => $id]);
+    }
+
+    public function select(array $fields,string $sql, array $params = []): array
+    {
+        $stmt = $this->conn->prepare("select ".implode(",", $fields)." from $this->table ".$sql);
+        $stmt->execute($params);
+        return $stmt->fetchAll();
     }
 }
