@@ -3,6 +3,7 @@ require_once("Base.php");
 
 Class UserModel extends BaseModel
 {
+    public $table = "users";
     public $name;
     public $email;
     public $password;
@@ -33,16 +34,6 @@ Class UserModel extends BaseModel
         ]);
     }
 
-    public function findById(int $id): array
-    {
-        $stmt = $this->conn->prepare("SELECT * FROM users WHERE id = :id");
-        $stmt->execute([':id' => $id]);
-        return $stmt->fetch();
-    }
-    public function deleteById(int $id): void
-    {
-        $stmt = $this->conn->prepare("DELETE FROM users WHERE id = :id");
-        $stmt->execute([':id' => $id]);
-    }
+ 
    
 }
