@@ -1,6 +1,6 @@
 <?php
 
-require_once("../Database/connection.php");
+require_once("../database/connection.php");
 class BaseModel{
     protected $conn;
     public function __construct() {

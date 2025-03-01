@@ -1,6 +1,5 @@
 <?php
 require_once("../Database/connection.php");
-
 class SessionHelper
 {
     protected $sid;
