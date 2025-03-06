@@ -3,12 +3,14 @@ require_once(__DIR__."/../database/connection.php");
 class SessionHelper
 {
     protected $sid;
-    protected $data;
-    protected $isAuth = false;
+    public $data;
     private $conn;
     public function __construct()
     {
         $this->conn = (new DatabaseConnection())->getPdo();
+
+    }
+    public function isAuth(){
         $sessionId = $_COOKIE['sid'] ?? null;
 
         if (isset($sessionId)) {
@@ -17,12 +19,11 @@ class SessionHelper
             $result = $stmt->fetchColumn();
 
             if ($result !== false) {
-                $this->isAuth = true;
+                return true;
                 $this->data = json_decode($result, true);
             }
         }
     }
-
 
     public function createSession($data)
     {
@@ -31,7 +32,6 @@ class SessionHelper
         header('Set-Cookie: sid=' . $this->sid . '; expires=' . gmdate('D, d-M-Y H:i:s', time() + 3600) . '; path=/; domain=localhost; secure; httponly');
         $this->conn->prepare("INSERT INTO sessions (sid, data) VALUES (:sid, :data)")
             ->execute([':sid' => $this->sid, ':data' => $data]);
-        $this->isAuth = true;
         $this->data = $data;
     }
 
@@ -56,7 +56,6 @@ class SessionHelper
         $this->conn->prepare("DELETE FROM sessions WHERE sid = :sid")
             ->execute([':sid' => $this->sid]);
         $this->sid = null;
-        $this->isAuth = false;
         $this->data = [];
     }
 

@@ -3,6 +3,8 @@ require_once("../../../helpers/controller.php");
 
 post(function () {
     $data = getRequestBody();
+    $data=validate(["email" => "email", "password" => "string"], $data);
+    var_dump($data);
     $user = (new UserModel())->findByEmail($data['email']);
     
     if ($user && $user["role"] === "admin" && password_verify($data['password'], $user["password"])) {
