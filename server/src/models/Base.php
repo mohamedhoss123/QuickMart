@@ -13,7 +13,7 @@ class BaseModel{
         $stmt->execute();
         return $stmt->fetchAll();
     }
-    public function findById(int $id): array
+    public function findById(int $id): array | bool
     {
         $stmt = $this->conn->prepare("SELECT * FROM $this->table WHERE id = :id");
         $stmt->execute([':id' => $id]);

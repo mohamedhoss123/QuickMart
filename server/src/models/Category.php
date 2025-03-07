@@ -19,10 +19,7 @@ class CategoryModel extends BaseModel {
         ]);
     }
 
-    public function delete(int $id){
-        $stmt = $this->conn->prepare("DELETE FROM $this->table WHERE id = :id ");
-        $stmt->execute([':id'=>$id]);
-    }
+   
     public function update(int $id,string $name){
         $stmt = $this->conn->prepare("UPDATE $this->table SET name = :name WHERE id = :id ");
         $stmt->execute([':id'=>$id,":name"=>$name]);

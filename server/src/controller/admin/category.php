@@ -15,7 +15,7 @@ get(function () {
 post(function () {
     $data = validate(["name"=>"string"],getRequestBody());
     $category = new CategoryModel();
-    $category->create($data["name"]);
+    $category->create(...$data);
     response(["message"=>"Category created successfully"],200);
 
 });
@@ -32,9 +32,7 @@ put(function () {
 delete(function () {
     
     $data = validate(["id"=>"number"],getQueryParams());
-    
-
     $category = new CategoryModel();
-    $category->delete($data["id"]);
+    $category->deleteById($data["id"]);
     response(["message"=>"Category deleted successfully"],200);
 });
