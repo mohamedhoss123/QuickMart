@@ -7,7 +7,12 @@ class BaseModel{
     public function __construct() {
         $this->conn = (new DatabaseConnection())->getPdo();
     }
-
+    public function findAll(): array
+    {
+        $stmt = $this->conn->prepare("SELECT * FROM $this->table");
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
     public function findById(int $id): array
     {
         $stmt = $this->conn->prepare("SELECT * FROM $this->table WHERE id = :id");
