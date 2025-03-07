@@ -25,7 +25,7 @@ function getRequestBody()
         return $_POST;
     }
 
-    return null;
+    return [];
 }
 
 
@@ -34,4 +34,5 @@ function response($data, $status = 200)
 {
     http_response_code($status);
     echo json_encode($data);
+    exit(0);
 }

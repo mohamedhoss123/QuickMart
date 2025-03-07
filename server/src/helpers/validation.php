@@ -28,12 +28,17 @@ $validators = [
 function validate(array $rules, array $data) {
     global $validators;
     $res = [];
+    $errors = [];
     foreach ($rules as $key => $rule) {
         if (isset($data[$key])) {
             $res[$key] = $validators[$rule]($data[$key]);
         }else{
-            throw new InvalidArgumentException('Invalid data');
+            array_push($errors, "$key must be type of $rule");
         }
+    }
+    if (count($errors) > 0) {
+        response($errors, 400);
+        
     }
     return $res;
 }
