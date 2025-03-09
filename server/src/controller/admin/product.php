@@ -29,6 +29,10 @@ post(function () {
 
     $info = new SplFileInfo($file['name']);
     $destination =  "/var/www/html/public/" . generateUuidV4() . "." . $info->getExtension();
+
+    if (!file_exists(dirname($destination))) {
+        mkdir(dirname($destination), 0777, true);
+    }
     if (move_uploaded_file($file['tmp_name'], $destination)) {
         response(["message" => "Product created successfully"], 200);
     } else {
