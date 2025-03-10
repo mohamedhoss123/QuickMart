@@ -24,16 +24,17 @@ get(function () {
 post(function () {
     $data = validate(["name" => "string", "price" => "number", "category_id" => "number", "stock_quantity" => "number"], getRequestBody());
     $product = new ProductModel();
-    $product->create(...$data);
+    $id = $product->create(...$data);
     $file = $_FILES['file'];
-
     $info = new SplFileInfo($file['name']);
-    $destination =  "/var/www/html/public/" . generateUuidV4() . "." . $info->getExtension();
+    $filename = generateUuidV4() . "." . $info->getExtension();
+    $destination =  "/var/www/html/public/" . $filename;
 
     if (!file_exists(dirname($destination))) {
         mkdir(dirname($destination), 0777, true);
     }
     if (move_uploaded_file($file['tmp_name'], $destination)) {
+        $product->addImageToProduct($id,$filename,0);
         response(["message" => "Product created successfully"], 200);
     } else {
         response(["error" => "File upload failed"], 500);
