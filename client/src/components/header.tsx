@@ -9,7 +9,9 @@ export default function Header() {
     <header className="border-b border-[#ECECEC] p-5">
       <Container className="flex items-center justify-between">
         <div>
-          <img src="/static/media/logos/fast-kart.png" alt="fast-kart-logo" />
+          <h1 className="text-2xl font-bold font-sans">
+            <span className="text-[#0BAF9A]">Quick</span><span className="text-[#22222]">Mart</span>
+          </h1>
         </div>
 
         <div>
