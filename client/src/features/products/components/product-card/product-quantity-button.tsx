@@ -19,14 +19,14 @@ export default function ProductQuantityButton() {
     return (
         <div className="border-[2px] border-[#ECECEC] flex items-center  rounded-[6px] overflow-hidden h-[40px]">
             <Button onClick={decrementQuantity} className="rounded-[0] bg-transparent hover:bg-accent border-r-[2px] border-[#ECECEC] cursor-pointer">
-                <FaMinus color="black" />
+                <FaMinus color="#222222" />
             </Button>
-            <div className="w-[50px] h-full flex items-center justify-center font-medium  bg-[#ECECEC]">
+            <div className="w-[50px] h-full flex items-center justify-center font-medium  bg-[#ECECEC] text-[#222222]">
                 {quantity}
             </div>
 
             <Button onClick={incrementQuantity} className="rounded-[0] bg-transparent hover:bg-accent border-l-[2px] border-[#ECECEC] cursor-pointer">
-                <FaPlus color="black" />
+                <FaPlus color="#222222" />
             </Button>
         </div>
     )
