@@ -19,8 +19,8 @@ class SessionHelper
             $result = $stmt->fetchColumn();
 
             if ($result !== false) {
-                return true;
                 $this->data = json_decode($result, true);
+                return true;
             }
         }
     }
