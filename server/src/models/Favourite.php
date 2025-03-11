@@ -19,7 +19,7 @@ class FavouriteModel extends BaseModel
     }
     public function removeFromFav(int $userId, int $productId)
     {
-        $stmt = $this->conn->prepare("DELETE FROM $this->table WHERE user_id = :userid join product on product.id = :productid");
+        $stmt = $this->conn->prepare("DELETE FROM $this->table WHERE user_id = :userid and product_id = :productid");
         $stmt->execute([
             ':userid' => $userId,
             ':productid' => $productId
