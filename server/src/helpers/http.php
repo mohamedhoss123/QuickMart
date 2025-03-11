@@ -25,6 +25,14 @@ function getRequestBody()
         return $_POST;
     }
 
+    if (stripos($contentType, 'multipart/form-data') !== false) {
+        $data = [];
+        foreach ($_FILES as $key => $file) {
+            $data[$key] = $file;
+        }
+        return array_merge($data, $_POST);
+    }
+
     return [];
 }
 
