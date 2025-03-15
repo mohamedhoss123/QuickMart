@@ -11,13 +11,13 @@ export default function AnouncementBanner() {
             </div>
             <div className="flex items-center justify-center space-x-3 text-white">
                 <p className="font-bold">
-                    Welcome to Fastkart!
+                    Welcome to QuickMart!
                 </p>
                 <p>
                     Wrap new offers/gift every single day on Weekends.
                 </p>
                 <p className="font-bold">
-                    New Coupon Code: Fast024
+                    New Coupon Code: QuickMart024
                 </p>
             </div>
 

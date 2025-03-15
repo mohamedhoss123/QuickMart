@@ -1,18 +1,6 @@
-import ProductCard from '@/features/product/components/product-card/product-card'
+import MarketingPage from '@/components/marketing-page'
 import { createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/')({
-    component: Index,
+    component: MarketingPage,
 })
-
-function Index() {
-    return (
-        <div className="p-2">
-            <h3>Welcome Home!</h3>
-
-            <div>
-                <ProductCard />
-            </div>
-        </div>
-    )
-}

@@ -16,7 +16,7 @@ export default function ProductHeader() {
             </div>
             <div className="cursor-pointer" onClick={handleToggleHeart}>
                 {
-                    toggleHeart ? <FaRegHeart size={25} color="#4A5568" /> : <FaHeart color="red" size={25} />
+                    !toggleHeart ? <FaRegHeart size={25} color="#4A5568" /> : <FaHeart color="red" size={25} />
                 }
             </div>
         </div>
