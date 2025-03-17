@@ -37,4 +37,8 @@ CREATE TABLE IF NOT EXISTS product_images(
     is_main BOOLEAN
 )
 
-
+CREATE TABLE IF NOT EXISTS favourite(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    product_id INT REFERENCES products(id),
+    user_id INT REFERENCES users(id)
+)
